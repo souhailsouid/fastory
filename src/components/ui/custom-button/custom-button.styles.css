@@ -1,0 +1,53 @@
+.custom-button {
+  min-width: 165px;
+  width: auto;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
+  font-size: 15px;
+  background-color: #2b80f7;
+  border: 1px solid #5880a6;
+  border-radius: 30px;
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 900px) {
+  .custom-button {
+    font-size: 12px;
+    padding: auto;
+    height: auto;
+  }
+}
+.custom-button:hover {
+  background-color: #ffe900;
+  color: black;
+  border: 1px solid #ffe900;
+}
+
+.custom-button.google-sign-in {
+  background-color: #4285f4;
+  color: white;
+}
+
+.custom-button.google-sign-in:hover {
+  background-color: #357ae8;
+  border: none;
+}
+
+.fastory {
+  padding: 8px 24px;
+  border-radius: 30px;
+  margin-right: 16px;
+  line-height: 1.5em;
+  transition: all 0.2s;
+  color: #fff;
+  background: #5880a6;
+  border: 1px solid #fff;
+}

@@ -1,0 +1,28 @@
+.card-article {
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  margin: 4rem auto;
+  display: flex;
+}
+.card-section {
+  width: 100%;
+  background-color: #fff;
+  margin: 2rem auto;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+@media screen and (max-width: 900px) {
+  .card-article {
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin: auto;
+  }
+  .card-section {
+    margin: 1rem auto;
+    padding: 0;
+  }
+}

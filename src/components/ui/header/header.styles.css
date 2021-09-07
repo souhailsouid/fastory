@@ -1,0 +1,50 @@
+.header {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 2rem;
+}
+
+.header .logo-container {
+  height: 100%;
+  width: 70px;
+  padding: 25px;
+}
+
+.header .profile-header {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header .profile-header .option {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.option:hover {
+  color: #5880a6;
+  text-decoration: underline #5880a6;
+}
+
+.name-style {
+  font-size: 1.525rem;
+  margin-right: 1rem;
+  color: black;
+  font-weight: 800;
+}
+
+@media screen and (max-width: 900px) {
+  .profile-header {
+    flex-direction: column;
+  }
+  .name-style {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    margin-right: 1rem;
+    color: black;
+    font-weight: 800;
+  }
+}

@@ -1,0 +1,40 @@
+.search-bar-component {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin: 0.3rem 0rem;
+  padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+}
+
+.search-bar-input {
+  background: none;
+  font: inherit;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  margin-left: 0.5rem;
+}
+
+.search-bar-component .search-bar-input:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+input {
+  color: white;
+}
+::selection {
+  background-color: yellow;
+  color: black;
+}
+
+.search-button {
+  padding: 5px 10px 10px 5px;
+  background-color: inherit;
+  border: none;
+}
