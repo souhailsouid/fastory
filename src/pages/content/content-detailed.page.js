@@ -5,12 +5,12 @@ import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { loadResponse } from '../../redux/search/search.actions'
-import { showResults } from '../../redux/search/search.selectors'
+import { loadResponse } from 'redux/search/search.actions'
+import { showResults } from 'redux/search/search.selectors'
 
-import ContentDetailedComponent from '../../components/content/content-detailed.component'
+import ContentDetailedComponent from 'components/content/content-detailed.component'
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
-import { store } from '../../redux/store'
+import { store } from 'redux/store'
 
 function isNumeric (value) {
   return !isNaN(value)

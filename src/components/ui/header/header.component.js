@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import CustomButtom from '../custom-button/custom-button.component'
-import { selectCurrentUser } from '../../../redux/user/user.selectors'
-import { signOutStart } from '../../../redux/user/user.actions'
+import { selectCurrentUser } from 'redux/user/user.selectors'
+import { signOutStart } from 'redux/user/user.actions'
+
+import CustomButtom from 'components/ui/custom-button/custom-button.component'
 import './header.styles.css'
 
 const Header = ({ currentUser, signOutStart }) => {

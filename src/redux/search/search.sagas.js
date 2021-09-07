@@ -1,7 +1,7 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects'
-import { searchSuccess, searchFailure } from './search.actions'
-import SearchActionsTypes from './search.types'
-import UseCustomAxios from '../../services/custom-axios'
+import { searchSuccess, searchFailure } from 'redux/search/search.actions'
+import SearchActionsTypes from 'redux/search/search.types'
+import UseCustomAxios from 'services/custom-axios'
 
 export function * launchSearch ({ payload: { query } }) {
   try {

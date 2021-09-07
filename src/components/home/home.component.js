@@ -1,15 +1,14 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/prop-types */
+
 import React, { useEffect, useState, useMemo } from 'react'
 import debounce from 'lodash.debounce'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { selectCurrentUser } from '../../redux/user/user.selectors'
-import { launchSearch, searchFailure } from '../../redux/search/search.actions'
+import { selectCurrentUser } from 'redux/user/user.selectors'
+import { launchSearch, searchFailure } from 'redux/search/search.actions'
 
-import Spinner from '../ui/spinner/spinner'
-import SearchBar from '../ui/search-bar/search-bar.component'
+import Spinner from 'components/ui/spinner/spinner'
+import SearchBar from 'components/ui/search-bar/search-bar.component'
 
 const HomeComponent = ({ launchSearch }) => {
   const [query, setQuery] = useState('')

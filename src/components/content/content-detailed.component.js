@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Card from '../ui/card/card.component'
+import Card from 'components/ui/card/card.component'
 
 const ContentDetailedComponent = ({
   content: {

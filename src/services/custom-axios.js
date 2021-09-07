@@ -1,6 +1,6 @@
 import axios from 'axios'
-// eslint-disable-next-line import/no-cycle
-import { store } from '../redux/store'
+
+import { store } from 'redux/store'
 
 const UseCustomAxios = () => {
   const { token } = store.getState().user.currentUser.data

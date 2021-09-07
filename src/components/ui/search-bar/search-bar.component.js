@@ -1,7 +1,7 @@
 import React from 'react'
 
 import PropTypes from 'prop-types'
-import IconSearch from '../svg/icon-search.component'
+import IconSearch from 'components/ui/svg/icon-search.component'
 import './search-bar.styles.css'
 
 const SearchBar = ({ handleChange, onClick, label, ...otherProps }) => (

@@ -3,13 +3,14 @@ import debounce from 'lodash.debounce'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { selectCurrentUser } from '../../../redux/user/user.selectors'
+import { selectCurrentUser } from 'redux/user/user.selectors'
 import {
   launchSearch,
   searchFailure
-} from '../../../redux/search/search.actions'
+} from 'redux/search/search.actions'
+import SearchBar from 'components/ui/search-bar/search-bar.component'
+
 import './nav-bar.styles.css'
-import SearchBar from '../search-bar/search-bar.component'
 
 const categories = [
   'films',

@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { selectCurrentUser } from '../../redux/user/user.selectors'
-import { loadResponse } from '../../redux/search/search.actions'
-import { showResults } from '../../redux/search/search.selectors'
-import ContentComponent from '../../components/content/content.component'
+import { selectCurrentUser } from 'redux/user/user.selectors'
+import { loadResponse } from 'redux/search/search.actions'
+import { showResults } from 'redux/search/search.selectors'
+import ContentComponent from 'components/content/content.component'
 
 const ContentPage = ({ loadResponse }) => {
   const { query, page } = useParams()

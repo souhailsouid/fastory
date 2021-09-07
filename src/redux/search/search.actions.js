@@ -1,4 +1,4 @@
-import SearchActionsTypes from './search.types'
+import SearchActionsTypes from 'redux/search/search.types'
 
 export const launchSearch = (query) => ({
   type: SearchActionsTypes.LAUNCH_SEARCH,

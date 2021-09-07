@@ -1,4 +1,4 @@
-import UserActionTypes from './user.types'
+import UserActionTypes from 'redux/user/user.types'
 
 export const emailSignInStart = (emailAndPassword) => ({
   type: UserActionTypes.EMAIL_SIGN_IN_START,

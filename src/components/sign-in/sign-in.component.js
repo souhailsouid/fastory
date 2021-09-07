@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import FormInput from '../ui/form-input/form-input.component.js'
-import CustomButtom from '../ui/custom-button/custom-button.component'
+import { emailSignInStart } from 'redux/user/user.actions'
 
-import { emailSignInStart } from '../../redux/user/user.actions'
+import FormInput from 'components/ui/form-input/form-input.component.js'
+import CustomButtom from 'components/ui/custom-button/custom-button.component'
 
-import { AlertFadelessExample } from '../ui/alert/alert.component.js'
+import { AlertFadelessExample } from 'components/ui/alert/alert.component.js'
 
 import './sign-in.styles.css'
 

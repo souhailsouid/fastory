@@ -1,4 +1,4 @@
-import SearchActionTypes from './search.types'
+import SearchActionTypes from 'redux/search/search.types'
 
 const INITIAL_STATE = {
   search: null,

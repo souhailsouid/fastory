@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import IconClose from '../svg/icon-close.component'
+import IconClose from 'components/ui/svg/icon-close.component'
 import './alert.styles.css'
 
 const Alert = ({ isOpen, children, onClose, color, ...otherProps }) =>

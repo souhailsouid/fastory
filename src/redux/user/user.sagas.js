@@ -1,7 +1,7 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects'
 import Axios from 'axios'
 import nookies from 'nookies'
-import UserActionTypes from './user.types'
+import UserActionTypes from 'redux/user/user.types'
 import {
   signInSuccess,
   signInFailure,

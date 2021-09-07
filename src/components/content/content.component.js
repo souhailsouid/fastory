@@ -1,12 +1,14 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import List from './list.component'
+
 import { createStructuredSelector } from 'reselect'
-import { showResults } from '../../redux/search/search.selectors'
-import PaginationComponent from '../ui/pagination/pagination.component'
-import './content.styles.css'
-import Spinner from '../ui/spinner/spinner'
+import { showResults } from 'redux/search/search.selectors'
+
+import PaginationComponent from 'components/ui/pagination/pagination.component'
+import Spinner from 'components/ui/spinner/spinner'
+import List from 'components/content/list.component'
+import 'components/content/content.styles.css'
 
 const ContentComponent = ({ search, searchResults }) => {
   const data = search && search.data
