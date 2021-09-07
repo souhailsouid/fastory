@@ -1,66 +1,49 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import debounce from 'lodash.debounce';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { store } from '../../redux/store';
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState, useMemo } from 'react'
+import debounce from 'lodash.debounce'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
-import { selectCurrentUser } from '../../redux/user/user.selectors';
-import { launchSearch, searchFailure } from '../../redux/search/search.actions';
+import { selectCurrentUser } from '../../redux/user/user.selectors'
+import { launchSearch, searchFailure } from '../../redux/search/search.actions'
 
-import List from '../content/list.component';
-import PaginationComponent from '../ui/pagination/pagination.component';
-import Spinner from '../ui/spinner/spinner';
-import SearchBar from '../ui/search-bar/search-bar.component.js';
-import Card from '../ui/card/card.component';
-import ContentComponent from '../content/content.component';
+import Spinner from '../ui/spinner/spinner'
+import SearchBar from '../ui/search-bar/search-bar.component'
+
 const HomeComponent = ({ launchSearch }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('')
 
-  const [isLoading, setLoading] = useState(false);
-  const search = store.getState().search.search;
-  const data =
-    store.getState().search.search && store.getState().search.search.data;
-  const { error } = store.getState().search;
+  const [isLoading, setLoading] = useState(false)
 
-  function dataToMap() {
-    if (search && data.hasOwnProperty('results')) return data.results;
-    return [data];
-  }
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    setLoading(true);
-    launchSearch(query);
-    setQuery('');
+    setLoading(true)
+    launchSearch(query)
+    setQuery('')
     setTimeout(() => {
-      setLoading(false);
-    }, 600);
-  };
+      setLoading(false)
+    }, 600)
+  }
 
   const changeHandler = (event) => {
-    setQuery(event.target.value);
-  };
+    setQuery(event.target.value)
+  }
 
   const debouncedChangeHandler = useMemo(
     () => debounce(changeHandler, 300),
-    [query]
-  );
+    []
+  )
 
-  useEffect(() => {
-    return () => {
-      debouncedChangeHandler.cancel();
-    };
-  }, []);
+  useEffect(
+    () => () => {
+      debouncedChangeHandler.cancel()
+    },
+    [debouncedChangeHandler]
+  )
 
-  const results =
-    search &&
-    query !== '' &&
-    error === null &&
-    dataToMap().map((list) => (
-      <List key={list.name || list.title} list={list} params={query} />
-    ));
-
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <Spinner />
 
   return (
     <div>
@@ -71,11 +54,11 @@ const HomeComponent = ({ launchSearch }) => {
               style={{
                 color: 'white',
                 fontSize: '18px',
-                fontWeigth: '800',
+                fontWeigth: '800'
               }}
             >
-              https://swapi.dev/api/{' '}
-            </span>{' '}
+              https://swapi.dev/api/
+            </span>
             <SearchBar
               name="query"
               type="text"
@@ -88,20 +71,20 @@ const HomeComponent = ({ launchSearch }) => {
         </section>
       </article>
 
-      <article className="peoples-container">
+      {/* <article className="peoples-container">
         {error && <span>Pas de donnée trouvée...</span>}
-      </article>
+      </article> */}
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
+  currentUser: selectCurrentUser
+})
 
 const mapDispatchToProps = (dispatch) => ({
   launchSearch: (query) => dispatch(launchSearch({ query })),
-  searchFailure: () => dispatch(searchFailure({})),
-});
+  searchFailure: () => dispatch(searchFailure({}))
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent)

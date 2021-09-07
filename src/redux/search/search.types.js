@@ -5,6 +5,6 @@ const SearchActionsTypes = {
   LOAD_CHARACTER: 'LOAD_CHARACTER',
   SEARCH_FAILURE: 'SEARCH_FAILURE',
   LOAD_RESPONSE: 'LOAD_RESPONSE',
-  LOAD_URL: 'LOAD_URL',
-};
-export default SearchActionsTypes;
+  LOAD_URL: 'LOAD_URL'
+}
+export default SearchActionsTypes

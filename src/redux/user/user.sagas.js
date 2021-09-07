@@ -1,48 +1,48 @@
-import { takeLatest, put, all, call } from 'redux-saga/effects';
-import Axios from 'axios';
-import UserActionTypes from './user.types';
+import { takeLatest, put, all, call } from 'redux-saga/effects'
+import Axios from 'axios'
+import nookies from 'nookies'
+import UserActionTypes from './user.types'
 import {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure,
-} from './user.actions';
-import nookies from 'nookies';
+  signOutFailure
+} from './user.actions'
 
-function setCookie(response) {
-  const token = response.data.token;
+function setCookie (response) {
+  const token = response.data.token
 
-  return nookies.set(null, 'cookie_au_noix_de_pecan', token);
+  return nookies.set(null, 'cookie_au_noix_de_pecan', token)
 }
-export function* signIn({ payload: { username, password } }) {
+export function * signIn ({ payload: { username, password } }) {
   try {
     const response = yield Axios.post('http://localhost:5000/login', {
       username,
-      password,
-    });
-    setCookie(response);
-    yield put(signInSuccess(response));
+      password
+    })
+    setCookie(response)
+    yield put(signInSuccess(response))
   } catch (error) {
-    yield put(signInFailure(error.response.data.message));
+    yield put(signInFailure(error.response.data.message))
   }
 }
 
-export function* signOut() {
+export function * signOut () {
   try {
-    yield put(signOutSuccess());
+    yield put(signOutSuccess())
   } catch (error) {
-    yield put(signOutFailure(error));
+    yield put(signOutFailure(error))
   }
 }
 
-export function* onEmailSignInStart() {
-  yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signIn);
+export function * onEmailSignInStart () {
+  yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signIn)
 }
 
-export function* onSignOutStart() {
-  yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
+export function * onSignOutStart () {
+  yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut)
 }
 
-export function* userSagas() {
-  yield all([call(onEmailSignInStart), call(onSignOutStart)]);
+export function * userSagas () {
+  yield all([call(onEmailSignInStart), call(onSignOutStart)])
 }

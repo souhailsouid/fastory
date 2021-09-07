@@ -1,13 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
-import './form-input.styles.css';
+import PropTypes from 'prop-types'
+import './form-input.styles.css'
 
 const FormInput = ({ handleChange, label, ...otherProps }) => (
   <div className="group">
     <input className="form-input" onChange={handleChange} {...otherProps} />
 
-    {label ? (
+    {label
+      ? (
       <label
         className={`${
           otherProps.value.length ? 'shrink' : ''
@@ -15,13 +16,14 @@ const FormInput = ({ handleChange, label, ...otherProps }) => (
       >
         {label}{' '}
       </label>
-    ) : null}
+        )
+      : null}
   </div>
-);
+)
 
 FormInput.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-};
+  label: PropTypes.string.isRequired
+}
 
-export default FormInput;
+export default FormInput

@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
-import IconSearch from '../svg/icon-search.component';
-import './search-bar.styles.css';
+import PropTypes from 'prop-types'
+import IconSearch from '../svg/icon-search.component'
+import './search-bar.styles.css'
 
 const SearchBar = ({ handleChange, onClick, label, ...otherProps }) => (
   <section className="search-bar-component">
@@ -16,11 +16,11 @@ const SearchBar = ({ handleChange, onClick, label, ...otherProps }) => (
       <IconSearch />
     </button>
   </section>
-);
+)
 
 SearchBar.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-};
+  label: PropTypes.string.isRequired
+}
 
-export default SearchBar;
+export default SearchBar

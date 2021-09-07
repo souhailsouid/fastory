@@ -1,8 +1,8 @@
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectSearch = (state) => state.search;
+const selectSearch = (state) => state.search
 
 export const showResults = createSelector(
   [selectSearch],
   (search) => search.search
-);
+)

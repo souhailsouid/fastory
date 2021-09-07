@@ -1,34 +1,34 @@
-import SearchActionsTypes from './search.types';
+import SearchActionsTypes from './search.types'
 
 export const launchSearch = (query) => ({
   type: SearchActionsTypes.LAUNCH_SEARCH,
-  payload: query,
-});
+  payload: query
+})
 
 export const searchSuccess = (result) => ({
   type: SearchActionsTypes.SEARCH_SUCCESS,
-  payload: result,
-});
+  payload: result
+})
 
 export const searchFailure = (error) => ({
   type: SearchActionsTypes.SEARCH_FAILURE,
-  payload: error,
-});
+  payload: error
+})
 
 export const loadPeople = (people) => ({
   type: SearchActionsTypes.LOAD_PEOPLE,
-  payload: people,
-});
+  payload: people
+})
 
 export const loadCharacter = (id) => ({
   type: SearchActionsTypes.LOAD_CHARACTER,
-  payload: id,
-});
+  payload: id
+})
 export const loadResponse = (queryAndPage) => ({
   type: SearchActionsTypes.LOAD_RESPONSE,
-  payload: queryAndPage,
-});
+  payload: queryAndPage
+})
 export const loadURL = (queryAndPage) => ({
   type: SearchActionsTypes.LOAD_URL,
-  payload: queryAndPage,
-});
+  payload: queryAndPage
+})

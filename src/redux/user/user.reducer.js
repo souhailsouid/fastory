@@ -1,9 +1,9 @@
-import UserActionTypes from './user.types';
+import UserActionTypes from './user.types'
 
 const INITIAL_STATE = {
   currentUser: null,
-  error: null,
-};
+  error: null
+}
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -12,26 +12,26 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         currentUser: action.payload,
         token: action.payload.data.token,
-        error: null,
-      };
+        error: null
+      }
     case UserActionTypes.SIGN_OUT_SUCCESS:
       return {
         ...state,
         currentUser: null,
-        error: null,
-      };
+        error: null
+      }
     case UserActionTypes.SIGN_IN_FAILURE:
       return {
         ...state,
-        error: action.payload,
-      };
+        error: action.payload
+      }
     case UserActionTypes.SIGN_OUT_FAILURE:
       return {
         ...state,
-        error: action.payload,
-      };
+        error: action.payload
+      }
     default:
-      return state;
+      return state
   }
-};
-export default userReducer;
+}
+export default userReducer

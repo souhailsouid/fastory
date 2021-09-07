@@ -1,30 +1,31 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import FormInput from '../ui/form-input/form-input.component.js';
-import CustomButtom from '../ui/custom-button/custom-button.component';
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import FormInput from '../ui/form-input/form-input.component.js'
+import CustomButtom from '../ui/custom-button/custom-button.component'
 
-import { emailSignInStart } from '../../redux/user/user.actions';
+import { emailSignInStart } from '../../redux/user/user.actions'
 
-import './sign-in.styles.css';
-import { AlertFadelessExample } from '../ui/alert/alert.component.js';
+import { AlertFadelessExample } from '../ui/alert/alert.component.js'
+
+import './sign-in.styles.css'
 
 const SignIn = ({ user, emailSignInStart }) => {
   const [form, setForm] = useState({
     username: '',
-    password: '',
-  });
+    password: ''
+  })
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const { username, password } = form;
-    await emailSignInStart(username, password);
-  };
+    event.preventDefault()
+    const { username, password } = form
+    await emailSignInStart(username, password)
+  }
   const handleChange = (event) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value,
-    });
-  };
+      [event.target.name]: event.target.value
+    })
+  }
 
   return (
     <div className="sign-in">
@@ -32,7 +33,7 @@ const SignIn = ({ user, emailSignInStart }) => {
         <AlertFadelessExample message={user.error} color="error" />
       )}
       <h2 className="message-verification">
-        Prouves-nous que tu n'es pas de l'empire{' '}
+        Prouves-nous que tu n&apos;es pas de l&apos;empire{' '}
         <span role="img" aria-label="emoji">
           👋
         </span>
@@ -60,16 +61,15 @@ const SignIn = ({ user, emailSignInStart }) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-const mapStateToProps = (state) => {
-  return { user: state.user };
-};
+const mapStateToProps = (state) => ({ user: state.user })
 
 const mapDispatchToProps = (dispatch) => ({
-  emailSignInStart: (username, password) =>
-    dispatch(emailSignInStart({ username, password })),
-});
+  emailSignInStart: (username, password) => {
+    dispatch(emailSignInStart({ username, password }))
+  }
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

@@ -1,11 +1,11 @@
-import { ajax } from 'rxjs/ajax';
-import { ofType } from 'redux-observable';
+import { ajax } from 'rxjs/ajax'
+import { ofType } from 'redux-observable'
 import {
-  map, mergeMap, tap, takeUntil,
-} from 'rxjs/operators';
-import { FETCH_CHARACTERS, fetchCharactersFulfilled } from './actions';
+  map, mergeMap, tap, takeUntil
+} from 'rxjs/operators'
+import { FETCH_CHARACTERS, fetchCharactersFulfilled } from './actions'
 
-const ENDPOINT = 'http://localhost:5000/people/';
+const ENDPOINT = 'http://localhost:5000/people/'
 
 const feddtchCharactersEpic = (action$) => action$.pipe(
   ofType(FETCH_CHARACTERS),
@@ -16,10 +16,10 @@ const feddtchCharactersEpic = (action$) => action$.pipe(
       takeUntil(
         action$.pipe(
           tap((value) => console.log('CANCELLING!', value)),
-          ofType(FETCH_CHARACTERS),
-        ),
-      ),
-    )),
-);
+          ofType(FETCH_CHARACTERS)
+        )
+      )
+    ))
+)
 
-export default feddtchCharactersEpic;
+export default feddtchCharactersEpic

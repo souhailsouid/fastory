@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { fetchCharacters } from './actions';
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { fetchCharacters } from './actions'
 
 const FetchCharacters = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('')
 
   const handleChange = (event) => {
-    const newValue = event.target.value;
+    const newValue = event.target.value
 
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   const handleSubmit = () => {
-    fetchCharacters(value);
-  };
+    fetchCharacters(value)
+  }
 
   return (
     <div>
@@ -26,14 +26,14 @@ const FetchCharacters = () => {
       />
       <button onClick={handleSubmit} type="button">Search</button>
     </div>
-  );
-};
+  )
+}
 
 FetchCharacters.propTypes = {
-  fetchCharacter: PropTypes.arrayOf.isRequired,
-};
+  fetchCharacter: PropTypes.arrayOf.isRequired
+}
 
 export default connect(
   null,
-  { fetchCharacters },
-)(FetchCharacters);
+  { fetchCharacters }
+)(FetchCharacters)

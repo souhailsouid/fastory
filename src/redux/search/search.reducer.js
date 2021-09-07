@@ -1,9 +1,9 @@
-import SearchActionTypes from './search.types';
+import SearchActionTypes from './search.types'
 
 const INITIAL_STATE = {
   search: null,
-  error: null,
-};
+  error: null
+}
 
 const searchReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -11,15 +11,15 @@ const searchReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         search: action.payload,
-        error: null,
-      };
+        error: null
+      }
     case SearchActionTypes.SEARCH_FAILURE:
       return {
         ...state,
-        error: action.payload,
-      };
+        error: action.payload
+      }
     default:
-      return state;
+      return state
   }
-};
-export default searchReducer;
+}
+export default searchReducer

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import PropTypes from 'prop-types';
-import './custom-button.styles.css';
+import PropTypes from 'prop-types'
+import './custom-button.styles.css'
 
 const CustomButtom = ({ children, fastory, ...otherProps }) => (
   <button
@@ -11,11 +11,11 @@ const CustomButtom = ({ children, fastory, ...otherProps }) => (
   >
     {children}
   </button>
-);
+)
 
 CustomButtom.propTypes = {
   fastory: PropTypes.bool,
-  children: PropTypes.string.isRequired,
-};
+  children: PropTypes.string.isRequired
+}
 
-export default CustomButtom;
+export default CustomButtom

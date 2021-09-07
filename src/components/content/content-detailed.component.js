@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 
-import Card from '../ui/card/card.component';
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import Card from '../ui/card/card.component'
 
 const ContentDetailedComponent = ({
   content: {
@@ -21,38 +22,39 @@ const ContentDetailedComponent = ({
     species,
     starships,
     url,
-    vehicles,
-  },
+    vehicles
+  }
 }) => {
-  function arrayProps(props) {
-    if (typeof props === 'object')
+  function arrayProps (props) {
+    if (typeof props === 'object') {
       return (
         props &&
         props.map((prop) => {
           return (
-            <ul>
+            <ul key={prop}>
               <li>
                 <a
                   className="url-externe"
                   href={prop}
                   target="_blank"
-                  rel="stylesheet"
+                  rel="noreferrer"
                   title="lien-externe"
                 >
                   <span>{prop}</span>
                 </a>
               </li>
             </ul>
-          );
+          )
         })
-      );
+      )
+    }
   }
   const options = {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
-  };
+    day: 'numeric'
+  }
   return (
     <article className="content-detailed">
       <Card>
@@ -103,7 +105,7 @@ const ContentDetailedComponent = ({
                 className="url-externe"
                 href={homeworld}
                 target="_blank"
-                rel="stylesheet"
+                rel="noreferrer"
                 title="lien-externe"
               >
                 <span> {homeworld}</span>
@@ -121,12 +123,14 @@ const ContentDetailedComponent = ({
               Couleur de peau:<span> {skin_color}</span>
             </li>
           )}
-          {species && species.length ? (
+          {species && species.length
+            ? (
             <li>
               {' '}
               Espèce:<span>{arrayProps(species)}</span>
             </li>
-          ) : null}
+              )
+            : null}
         </ul>
       </Card>
       <Card>
@@ -136,12 +140,14 @@ const ContentDetailedComponent = ({
               Films:<span> {arrayProps(films)}</span>
             </li>
           )}
-          {starships && starships.length ? (
+          {starships && starships.length
+            ? (
             <li>
               {' '}
               Vaisseau:<span> {arrayProps(starships)}</span>
             </li>
-          ) : null}
+              )
+            : null}
           {url && (
             <li>
               {' '}
@@ -150,26 +156,28 @@ const ContentDetailedComponent = ({
                 className="url-externe"
                 href={url}
                 target="_blank"
-                rel="stylesheet"
+                rel="noreferrer"
                 title="lien-externe"
               >
                 <span> {url}</span>
               </a>
             </li>
           )}
-          {vehicles && vehicles.length ? (
+          {vehicles && vehicles.length
+            ? (
             <li>
               {' '}
               Véhicules:<span> {arrayProps(vehicles)}</span>
             </li>
-          ) : null}
+              )
+            : null}
         </ul>
       </Card>
     </article>
-  );
-};
+  )
+}
 ContentDetailedComponent.propTypes = {
-  name: PropTypes.string,
-};
+  name: PropTypes.string
+}
 
-export default ContentDetailedComponent;
+export default ContentDetailedComponent

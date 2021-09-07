@@ -1,79 +1,64 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import debounce from 'lodash.debounce';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { selectCurrentUser } from '../../../redux/user/user.selectors';
+import React, { useState, useMemo, useEffect } from 'react'
+import debounce from 'lodash.debounce'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import { selectCurrentUser } from '../../../redux/user/user.selectors'
 import {
   launchSearch,
-  searchFailure,
-} from '../../../redux/search/search.actions';
-import './nav-bar.styles.css';
-import SearchBar from '../search-bar/search-bar.component';
-import List from '../../content/list.component';
-import { store } from '../../../redux/store';
+  searchFailure
+} from '../../../redux/search/search.actions'
+import './nav-bar.styles.css'
+import SearchBar from '../search-bar/search-bar.component'
+
 const categories = [
   'films',
   'people',
   'planets',
   'species',
   'starships',
-  'vehicles',
-];
+  'vehicles'
+]
 
-const NavBarComponent = ({ currentUser, launchSearch, searchFailure }) => {
-  const [query, setQuery] = useState('');
+const NavBarComponent = ({ currentUser, launchSearch }) => {
+  const [query, setQuery] = useState('')
 
-  const [isLoading, setLoading] = useState(false);
-  const search = store.getState().search.search;
-  const data =
-    store.getState().search.search && store.getState().search.search.data;
-  const { error } = store.getState().search;
+  // eslint-disable-next-line no-unused-vars
+  const [_isLoading, setLoading] = useState(false)
 
-  function dataToMap() {
-    if (search && data.hasOwnProperty('results')) return data.results;
-    return [data];
-  }
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    setLoading(true);
-    launchSearch(query);
+    setLoading(true)
+    launchSearch(query)
 
     setTimeout(() => {
-      setLoading(false);
-    }, 600);
-  };
+      setLoading(false)
+    }, 600)
+  }
 
   const changeHandler = (event) => {
-    setQuery(event.target.value);
-  };
+    setQuery(event.target.value)
+  }
 
   const debouncedChangeHandler = useMemo(
     () => debounce(changeHandler, 300),
-    [query]
-  );
+    []
+  )
 
   useEffect(() => {
     return () => {
-      debouncedChangeHandler.cancel();
-    };
-  }, []);
+      debouncedChangeHandler.cancel()
+    }
+  }, [debouncedChangeHandler])
 
   const Links = categories.map((categorie) => {
     return (
       <Link className="link-style" to={`/${categorie}`} key={categorie}>
         {categorie}
       </Link>
-    );
-  });
-  const results =
-    search &&
-    query !== '' &&
-    error === null &&
-    dataToMap().map((list) => (
-      <List key={list.name || list.title} list={list} params={query} />
-    ));
+    )
+  })
 
   return (
     currentUser && (
@@ -94,15 +79,15 @@ const NavBarComponent = ({ currentUser, launchSearch, searchFailure }) => {
         </section>
       </article>
     )
-  );
-};
+  )
+}
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
+  currentUser: selectCurrentUser
+})
 const mapDispatchToProps = (dispatch) => ({
   launchSearch: (query) => dispatch(launchSearch({ query })),
-  searchFailure: () => dispatch(searchFailure({})),
-});
+  searchFailure: () => dispatch(searchFailure({}))
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBarComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBarComponent)
