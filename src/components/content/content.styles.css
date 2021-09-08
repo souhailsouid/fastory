@@ -1,10 +1,10 @@
-.peoples-container {
+.content-container {
   width: 100%;
   max-width: 600px;
   background-color: #fff;
   margin: 4rem auto;
 }
-.peoples-section {
+.content-section {
   width: 100%;
   max-width: 360px;
   background-color: #fff;
@@ -15,6 +15,7 @@
 
 .list {
   padding-left: 1rem;
+
 }
 
 .list-name,
@@ -51,9 +52,10 @@ span {
   .card-section {
     flex-direction: column;
     width: 100%;
-
     margin: auto;
+    
   }
+
 }
 
 li {

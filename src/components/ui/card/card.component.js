@@ -1,17 +1,25 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import './card.styles.css'
 
-const Card = ({ children }) => {
+const CardComponent = styled.div`
+  margin: 2rem auto;
+  width: 100%;
+  text-align: ${({ textAlign }) => (textAlign || 'left')};
+  max-width:  600px;
+  background-color: #fff;
+  margin: 4rem auto; 
+  display: flex;
+
+`
+const Card = ({ children, textAlign }) => {
   return (
-    <article className="card-article">
+    <CardComponent textAlign={textAlign}>
       <section className="card-section">{children}</section>
-    </article>
+    </CardComponent>
+
   )
-}
-Card.propTypes = {
-  name: PropTypes.string
 }
 
 export default Card
