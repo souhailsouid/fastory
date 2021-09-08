@@ -31,8 +31,7 @@ const ContentDetailedComponent = ({
         props &&
         props.map((prop) => {
           return (
-            <ul key={prop}>
-              <li>
+            <section key={prop}>
                 <a
                   className="url-externe"
                   href={prop}
@@ -42,8 +41,7 @@ const ContentDetailedComponent = ({
                 >
                   <span>{prop}</span>
                 </a>
-              </li>
-            </ul>
+            </section>
           )
         })
       )
@@ -56,7 +54,7 @@ const ContentDetailedComponent = ({
     day: 'numeric'
   }
   return (
-    <article className="content-detailed">
+    <article className="content-detailed" >
       <Card>
         <ul>
           <li>
@@ -137,7 +135,7 @@ const ContentDetailedComponent = ({
         <ul>
           {films && (
             <li>
-              Films:<span> {arrayProps(films)}</span>
+              Films:<span > {arrayProps(films)}</span>
             </li>
           )}
           {starships && starships.length
