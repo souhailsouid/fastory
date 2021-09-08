@@ -29,6 +29,7 @@ export function * signIn ({ payload: { username, password } }) {
 
 export function * signOut () {
   try {
+    nookies.destroy(null, 'cookie_au_noix_de_pecan')
     yield put(signOutSuccess())
   } catch (error) {
     yield put(signOutFailure(error))
