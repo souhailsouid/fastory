@@ -1,5 +1,15 @@
 # Getting Started with Create React App
 
+# Demarrer le projet avec npm start
+
+### `npm start`
+
+## J'ai ajouté un NPM Concurrently pour démarrer le front-end et le serveur simultanément.
+
+### Le serveur est dans le dossier server
+
+# Server avec NODEJS / HAPI
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
