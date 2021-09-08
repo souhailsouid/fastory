@@ -10,7 +10,7 @@ import Spinner from 'components/ui/spinner/spinner'
 import List from 'components/content/list.component'
 import 'components/content/content.styles.css'
 
-const ContentComponent = ({ search, searchResults, query }) => {
+const ContentComponent = ({ search, s }) => {
   const data = search && search.data
   function dataToMap () {
     if (search && Object.prototype.hasOwnProperty.call(data, 'results')) return data.results
@@ -20,16 +20,15 @@ const ContentComponent = ({ search, searchResults, query }) => {
 
   return (
     <article className="content-container">
-      <section className="content-section">{searchResults}</section>
       <section className="content-section">
         {search &&
           data !== undefined &&
-          !searchResults &&
+
           dataToMap().map((list) => (
             <List key={list.name || list.title} list={list} />
           ))}
       </section>
-      {data && (
+      {data && data.next && (
         <section>
           {' '}
           <PaginationComponent />{' '}

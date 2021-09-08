@@ -59,7 +59,7 @@ const SearchBarComponent = ({ setLoading, launchSearch }) => {
   return (
     <section className="search-bar-section">
     <span className="base-url-search">https://swapi.dev/api/</span>{' '}
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={handleSubmit}>
         <SearchBar
           name="query"
           label="Recherche..."
