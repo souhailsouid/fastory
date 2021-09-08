@@ -1,7 +1,7 @@
-require('dotenv').config()
+require('dotenv').config();
 
-const { URL } = process.env
+const { URL } = process.env;
 
 module.exports = {
-  URL
-}
+  URL,
+};

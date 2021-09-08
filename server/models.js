@@ -1,6 +1,6 @@
 const users = {
   username: 'Luke',
-  password: 'DadSucks'
-}
+  password: 'DadSucks',
+};
 
-module.exports = users
+module.exports = users;
