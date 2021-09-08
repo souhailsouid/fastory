@@ -13,7 +13,7 @@ import PrivateRoute from 'middleware/private-route'
 import HomePage from 'pages/home/homepage.component'
 import ContentPage from 'pages/content/content.page'
 import PeopleDetailed from 'pages/content/content-detailed.page'
-
+import ErrorPage from 'pages/error/error.page'
 // component
 import NavBarComponent from 'components/ui/nav-bar/nav-bar.component'
 import Header from 'components/ui/header/header.component'
@@ -30,6 +30,13 @@ const App = ({ currentUser }) => (
         exact
         path="/login"
         isAuthenticated={currentUser}
+      />
+
+      <PrivateRoute
+        exact
+        path="/erreur-404"
+        isAuthenticated={currentUser}
+        component={<ErrorPage />}
       />
       <PrivateRoute
         exact
