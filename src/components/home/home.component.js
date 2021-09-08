@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react'
 import debounce from 'lodash.debounce'
+// import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
@@ -21,7 +22,11 @@ const HomeComponent = ({ launchSearch }) => {
     setLoading(true)
     launchSearch(query)
     setQuery('')
+
     setTimeout(() => {
+      alert('ddo')
+      // <Redirect to="/somewhere/else" />
+
       setLoading(false)
     }, 600)
   }
@@ -70,7 +75,7 @@ const HomeComponent = ({ launchSearch }) => {
         </section>
       </article>
 
-      {/* <article className="peoples-container">
+      {/* <article className="content-container">
         {error && <span>Pas de donnée trouvée...</span>}
       </article> */}
     </div>

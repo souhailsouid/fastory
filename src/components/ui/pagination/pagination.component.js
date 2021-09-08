@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { launchSearch } from 'redux/search/search.actions'
 import { showResults } from 'redux/search/search.selectors.js'
 
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import './pagination.styles.css'
-
 const PaginationComponent = ({ result }) => {
   const { query } = useParams()
 

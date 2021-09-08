@@ -8,11 +8,9 @@ const List = ({ list: { name, title, url }, params }) => {
   const { query } = useParams()
 
   const path = params || `${query}/${name || title}`
-  console.log('list___query', query, url)
+
   const categories = url.split('api/').pop()
   categories.split('/').shift()
-
-  console.log('categories', categories.split('/').shift(), query, query.includes(categories.split('/').shift()))
 
   return (
     <Link className="list-name" to={`/${path}`}>

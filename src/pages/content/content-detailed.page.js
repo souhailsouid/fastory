@@ -1,6 +1,6 @@
 
-import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useParams, useLocation } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
@@ -9,9 +9,10 @@ import { loadResponse } from 'redux/search/search.actions'
 import { showResults } from 'redux/search/search.selectors'
 import List from 'components/content/list.component'
 import ContentDetailedComponent from 'components/content/content-detailed.component'
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
 
 import Card from 'components/ui/card/card.component'
+import SearchBarComponent from 'components/ui/search-bar/search-bar.component'
+import Spinner from 'components/ui/spinner/spinner'
 
 function isNumeric (value) {
   return !isNaN(value)
@@ -21,7 +22,10 @@ const ContentDetailed = ({ loadResponse, search }) => {
   const { pathname } = useLocation()
   const page = id
 
+  const [isLoading, setLoading] = useState(false)
+
   const data = search && search.data
+
   const showDataFiltered = () => {
     const dataToMap = data && data.results.filter((result) => {
       return result.name === id || result.title === id
@@ -48,13 +52,21 @@ const ContentDetailed = ({ loadResponse, search }) => {
   useEffect(() => {
     if (isNumeric(id)) loadResponse(query, page, pathname)
   }, [])
-
-  return data && data.results !== undefined
-    ? showDataFiltered()
-    : <ContentDetailedComponent
-          key={`${data.name || data.title}`}
-          content={data}
+  const result = () => {
+    return data && data.results !== undefined
+      ? showDataFiltered()
+      : <ContentDetailedComponent
+        key={`${data.name || data.title}`}
+        content={data}
       />
+  }
+  if (isLoading) return <Spinner />
+  return (
+    <article>
+     <SearchBarComponent setLoading={setLoading }/>
+        {result()}
+    </article>
+  )
 }
 
 const mapStateToProps = createStructuredSelector({

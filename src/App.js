@@ -17,12 +17,13 @@ import PeopleDetailed from 'pages/content/content-detailed.page'
 // component
 import NavBarComponent from 'components/ui/nav-bar/nav-bar.component'
 import Header from 'components/ui/header/header.component'
+
 import 'App.css'
 
 const App = ({ currentUser }) => (
   <div>
     <Header />
-    <NavBarComponent />
+    <NavBarComponent/>
 
     <Switch>
       <PublicRoute
@@ -51,7 +52,7 @@ const App = ({ currentUser }) => (
         component={<PeopleDetailed />}
       />
       <PrivateRoute
-        exact
+
         path="/:query/page/:page"
         isAuthenticated={currentUser}
         component={<ContentPage />}
