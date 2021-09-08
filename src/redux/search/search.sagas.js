@@ -8,6 +8,7 @@ export function * launchSearch ({ payload: { query } }) {
     const response = yield UseCustomAxios().get(`/${query}`)
     yield put(searchSuccess(response))
   } catch (error) {
+    document.location.href = '/erreur-404'
     yield put(searchFailure(error.response.data.message))
   }
 }
