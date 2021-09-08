@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react'
+
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { connect } from 'react-redux'
@@ -7,63 +7,54 @@ import { createStructuredSelector } from 'reselect'
 
 import { loadResponse } from 'redux/search/search.actions'
 import { showResults } from 'redux/search/search.selectors'
-
+import List from 'components/content/list.component'
 import ContentDetailedComponent from 'components/content/content-detailed.component'
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min'
-import { store } from 'redux/store'
+
+import Card from 'components/ui/card/card.component'
 
 function isNumeric (value) {
   return !isNaN(value)
 }
-const ContentDetailed = ({ loadResponse }) => {
+const ContentDetailed = ({ loadResponse, search }) => {
   const { query, id } = useParams()
   const { pathname } = useLocation()
+  const page = id
 
-  const [renderList, setList] = useState([])
-  const [state, setState] = useState([])
-  const { data } = store.getState().search && store.getState().search.search
+  const data = search && search.data
+  const showDataFiltered = () => {
+    const dataToMap = data && data.results.filter((result) => {
+      return result.name === id || result.title === id
+    })
 
-  useEffect(() => {
-    const filterTheResult = () => {
-      data !== null &&
-        data.results &&
-        setList(
-          data.results.filter((result) =>
-            result.name ? result.name === id : result.title === id
-          )
-        )
+    if (dataToMap.length) {
+      return dataToMap.map((content) => (
+        <ContentDetailedComponent
+          key={`${content.name || content.title}`}
+          content={content}
+        />
+      ))
+    } else {
+      return (
+      <Card textAlign="center">
+        {data.results.map((list) => (
+        <List key={list.name || list.title} list={list} />
+
+        ))}
+        </Card>
+      )
     }
-    const renderDataWithContext = async () => {
-      if (isNumeric(id)) {
-        return loadResponse(query, id, pathname)
-      }
-      if (isNaN(id)) return filterTheResult()
-    }
-    renderDataWithContext()
-  }, [
-    data,
-    state,
-    -id,
-    // filterTheResult,
-    loadResponse,
-    query,
-    pathname
-  ])
-  console.log('pzoeozp', Object.prototype.hasOwnProperty.call(data, 'results'))
-  function dataToMap () {
-    if (Object.prototype.hasOwnProperty.call(data, 'results')) return renderList
-    if (isNumeric(id)) return [data]
-    if (isNaN(id)) return renderList
-    return data
   }
-  console.log('data', data)
-  // return 'miaou'
-  return data && dataToMap().map((content) => (
-    <ContentDetailedComponent
-      key={`${content.name || content.title}`}
-      content={content}
-    />
-  ))
+  useEffect(() => {
+    if (isNumeric(id)) loadResponse(query, page, pathname)
+  }, [])
+
+  return data && data.results !== undefined
+    ? showDataFiltered()
+    : <ContentDetailedComponent
+          key={`${data.name || data.title}`}
+          content={data}
+      />
 }
 
 const mapStateToProps = createStructuredSelector({
