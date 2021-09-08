@@ -6,15 +6,17 @@ import { createStructuredSelector } from 'reselect'
 import { selectCurrentUser } from 'redux/user/user.selectors'
 import { checkUserSession } from 'redux/user/user.actions'
 // middleware
+import PublicRoute from 'middleware/public-route'
 import PrivateRoute from 'middleware/private-route'
+
 // page
 import HomePage from 'pages/home/homepage.component'
 import ContentPage from 'pages/content/content.page'
 import PeopleDetailed from 'pages/content/content-detailed.page'
+
 // component
 import NavBarComponent from 'components/ui/nav-bar/nav-bar.component'
 import Header from 'components/ui/header/header.component'
-
 import 'App.css'
 
 const App = ({ currentUser }) => (
@@ -23,12 +25,18 @@ const App = ({ currentUser }) => (
     <NavBarComponent />
 
     <Switch>
+      <PublicRoute
+        exact
+        path="/login"
+        isAuthenticated={currentUser}
+      />
       <PrivateRoute
         exact
         path="/"
         isAuthenticated={currentUser}
         component={<HomePage />}
       />
+
       <PrivateRoute
         exact
         path="/:query"

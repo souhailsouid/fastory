@@ -1,14 +1,21 @@
 
 import React from 'react'
 
-import { Route } from 'react-router-dom'
-import SignInPage from 'pages/sign-in/sign-in.page'
+import { Route, Redirect } from 'react-router-dom'
+
+// import { Router } from 'react-router-dom/cjs/react-router-dom.min'
 
 function PrivateRoute ({ component, isAuthenticated, ...rest }) {
   return (
     <Route
       {...rest}
-      component={() => (isAuthenticated ? component : <SignInPage />)}
+      component={() => (isAuthenticated
+        ? component
+        : <Redirect
+                to={{
+                  pathname: '/login'
+                }}
+              />)}
     />
   )
 }
