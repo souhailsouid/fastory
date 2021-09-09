@@ -4,7 +4,7 @@
 
 ### `npm start`
 
-## J'ai ajouté un NPM Concurrently pour démarrer le front-end et le serveur simultanément.
+## J'ai ajouté le package Concurrently pour démarrer le front-end et le serveur simultanément.
 
 ### Le serveur est dans le dossier server
 
