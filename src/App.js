@@ -58,6 +58,13 @@ const App = ({ currentUser }) => (
         isAuthenticated={currentUser}
         component={<PeopleDetailed />}
       />
+        <PrivateRoute
+        exact
+        path="/:query/:id/format=wookiee"
+        isAuthenticated={currentUser}
+        component={<PeopleDetailed />}
+      />
+
       <PrivateRoute
 
         path="/:query/page/:page"

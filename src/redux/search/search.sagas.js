@@ -29,13 +29,24 @@ function isNumeric (value) {
 }
 
 function endPointFollowingContext (query, page, pathname) {
-  if (convertArgs(page) === '') return `${convertArgs(query)}`
   const urlIncludesPages = pathname.includes('/page/')
   const urlNotIncludesPages = !pathname.includes('/page/')
-  if (isNumeric(page) && urlNotIncludesPages) {
+  const urlIncludesWookiee = pathname.includes('format=wookiee')
+  const urlNotIncludesWookiee = !pathname.includes('format=wookiee')
+
+  if (convertArgs(page) === '') {
+    return `${convertArgs(query)}`
+  }
+
+  if (isNumeric(page) && urlNotIncludesPages && urlNotIncludesWookiee) {
     return `${convertArgs(query)}/${convertArgs(page)}`
   }
-  if (isNumeric(page) && urlIncludesPages) { return `${convertArgs(query)}/page/${convertArgs(page)}` }
+  if (isNumeric(page) && urlIncludesPages) {
+    return `${convertArgs(query)}/page/${convertArgs(page)}`
+  }
+  if (isNumeric(page) && urlNotIncludesPages && urlIncludesWookiee) {
+    return `${convertArgs(query)}/${convertArgs(page)}/format=wookiee`
+  }
 }
 
 export function * showResult ({ payload: { query, page, pathname } }) {
@@ -43,6 +54,7 @@ export function * showResult ({ payload: { query, page, pathname } }) {
     const response = yield UseCustomAxios().get(
       endPointFollowingContext(query, page, pathname)
     )
+
     yield put(searchSuccess(response))
   } catch (error) {
     yield put(searchFailure(error.response.data.message))

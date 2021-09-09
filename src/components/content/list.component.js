@@ -9,8 +9,8 @@ const List = ({ list: { name, title, url }, params }) => {
 
   const path = params || `${query}/${name || title}`
 
-  const categories = url.split('api/').pop()
-  categories.split('/').shift()
+  const categories = url && url.split('api/').pop()
+  url && categories.split('/').shift()
 
   return (
     <Link className="list-name" to={`/${path}`}>
