@@ -42,6 +42,7 @@ const start = async () => {
   server.route(require('./routes/get_results_following_query'));
   server.route(require('./routes/get_results_following_query_and_page'));
   server.route(require('./routes/get_results_detailed'));
+  server.route(require('./routes/get_results_detailed_into_wookies'));
 
   console.log('Server running on %s', server.info.uri);
 
