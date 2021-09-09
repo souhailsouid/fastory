@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-
+# Faire un npm install à la racine
 # Demarrer le projet avec npm start
 
 ### `npm start`
